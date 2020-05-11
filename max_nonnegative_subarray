@@ -1,0 +1,47 @@
+vector<int> max_Nonnegative_sub(vector<int> v)
+{
+  int n = v.size();
+  long long max_sum=0;
+  long long cur_sum=0;
+  int max_left_range=-1;
+  int max_right_range = -1;
+  int cur_left = 0;
+  int cur_right = 0;
+  while(cur_right < n)
+  {
+    if(v[cur_right] < 0) // for negative element in an array
+    {
+      cur_left = cur_right+1;
+      cur_sum = 0;
+    }
+    else
+    {
+      cur_sum = cur_sum + v[cur_right];
+      if(cur_sum > max_sum); //if current sum of one subarray is greater than sum of another subarray in an array
+      {
+        max_sum = cur_sum;
+        max_left_range = cur_leftt;
+        max+right_range = cur_right+1;
+      }
+      else if(cur_sum == max_sum) //if two subarray sums are equal
+      {
+        if(cur_right+1 - cur_left > max_right_range+1 - max_left_range)
+        {
+          max_left_range = cur_left;
+          max_right_range = cur_right+1;
+        }
+      }
+      cur_right++;
+   }
+   vector<int> ans;
+   if(max_left_range == -1 || max_right_range == -1)
+        return ans;
+   for(int i=max_left_range;i<max_right_range;i++)
+   {
+      ans.push_back(v[max_left_range]);
+   }
+   return ans;
+}
+        
+        
+      
